@@ -48,7 +48,6 @@ const Login = () => {
 
     const googleSuccess = (response: CredentialResponse) => {
         const decoded: GoogleAuthType = jwtDecode(response?.credential!)
-        debugger
         const user = {
             result: {
                 _id: decoded.sub,

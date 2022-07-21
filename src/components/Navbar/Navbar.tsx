@@ -50,7 +50,7 @@ const Navbar = () => {
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
                 <img className={classes.image} src={image} alt={'memories'}/>
-                <Typography className={classes.heading} component={Link} to={'/'} variant='h3'
+                <Typography className={classes.heading} component={Link} to={'/'} variant='h4'
                             align='center'>Memberberries</Typography>
             </div>
             <Toolbar>

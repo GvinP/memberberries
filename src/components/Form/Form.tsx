@@ -21,7 +21,7 @@ const postDataInitialState = {
 }
 const Form = ({setCurrentId, currentId}: FormPropsType) => {
     const [postData, setPostData] = useState<PostType>(postDataInitialState)
-    const post = useAppSelector(state => currentId ? state.posts.find(post => post._id === currentId) : null)
+    const post = useAppSelector(state => currentId ? state.posts.posts.find(post => post._id === currentId) : null)
     const dispatch = useAppDispatch()
     const classes = useStyles()
     //@ts-ignore

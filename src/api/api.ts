@@ -1,13 +1,14 @@
 import axios from 'axios'
 import {PostType} from "../reducers/postsReducer";
 import {FormDataType} from "../components/Login/Login";
+import {SearchQueryType} from "../actions/postsActions";
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/',
 })
 
-instance.interceptors.request.use((req)=>{
-    if(localStorage.getItem('profile')) {
+instance.interceptors.request.use((req) => {
+    if (localStorage.getItem('profile')) {
         //@ts-ignore
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
     }
@@ -15,8 +16,8 @@ instance.interceptors.request.use((req)=>{
 })
 
 export const api = {
-    getPosts() {
-        return instance.get('posts');
+    getPosts(page: number) {
+        return instance.get<any, any>(`posts?page=${page}`).then(res=>res.data);
     },
     addPost(post: PostType) {
         return instance.post('posts', post)
@@ -29,6 +30,9 @@ export const api = {
     },
     likePost(id: string) {
         return instance.patch(`posts/${id}/like`)
+    },
+    searchPosts(searchQuery: SearchQueryType) {
+        return instance.get(`posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`)
     },
 }
 

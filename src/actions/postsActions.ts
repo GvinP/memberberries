@@ -2,23 +2,25 @@ import {api} from '../api/api'
 import {AppThunk} from '../app/store'
 import {PostType} from '../reducers/postsReducer'
 
-export const setPostsAC = (posts: Array<PostType>) => ({type: 'SET-POSTS', posts} as const)
+export const setPostsAC = (posts: Array<PostType>, currentPage: number, totalPagesCount: number) => ({type: 'SET-POSTS', posts, currentPage, totalPagesCount} as const)
+export const setPostsBySearchAC = (posts: Array<PostType>) => ({type: 'SET-POSTS-BY-SEARCH', posts} as const)
 export const addPostAC = (post: PostType) => ({type: 'ADD-POST', post} as const)
 export const updatePostAC = (post: PostType) => ({type: 'UPDATE-POST', post} as const)
 export const deletePostAC = (id: string) => ({type: 'DELETE-POST', id} as const)
 
 type SetPostsActionType = ReturnType<typeof setPostsAC>;
+type SetPostsBySearchActionType = ReturnType<typeof setPostsBySearchAC>;
 type AddPostActionType = ReturnType<typeof addPostAC>;
 type UpdatePostActionType = ReturnType<typeof updatePostAC>;
 type DeletePostActionType = ReturnType<typeof deletePostAC>;
 
-export type PostsActionsType = SetPostsActionType | AddPostActionType | UpdatePostActionType | DeletePostActionType
+export type PostsActionsType = SetPostsActionType | AddPostActionType | UpdatePostActionType | DeletePostActionType | SetPostsBySearchActionType
 
-export const getPostsTC = (): AppThunk => {
+export const getPostsTC = (page: number): AppThunk => {
     return async (dispatch) => {
         try {
-            const {data} = await api.getPosts()
-            dispatch(setPostsAC(data))
+            const {data, currentPage, totalPagesCount} = await api.getPosts(page)
+            dispatch(setPostsAC(data, currentPage, totalPagesCount))
         } catch (e) {
             console.log(e)
         }
@@ -57,7 +59,16 @@ export const deletePostTC = (id: string): AppThunk => {
         }
     }
 }
-
+export const searchPostsTC = (searchQuery: SearchQueryType): AppThunk => {
+    return async (dispatch) => {
+        try {
+            const {data} = await api.searchPosts(searchQuery)
+            dispatch(setPostsBySearchAC(data))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
 export const likePostTC = (id: string): AppThunk => {
     return async (dispatch) => {
         try {
@@ -67,4 +78,9 @@ export const likePostTC = (id: string): AppThunk => {
             console.log(e)
         }
     }
+}
+
+export type SearchQueryType = {
+    search: string
+    tags: string
 }
