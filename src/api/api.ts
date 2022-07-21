@@ -19,6 +19,9 @@ export const api = {
     getPosts(page: number) {
         return instance.get<any, any>(`posts?page=${page}`).then(res=>res.data);
     },
+    getPost(id: string) {
+        return instance.get(`posts/${id}`)
+    },
     addPost(post: PostType) {
         return instance.post('posts', post)
     },

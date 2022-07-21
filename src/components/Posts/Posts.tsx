@@ -12,9 +12,12 @@ type PostsPropsType = {
 const Posts = ({setCurrentId}: PostsPropsType) => {
     const classes = useStyles()
     const posts = useAppSelector(state => state.posts.posts)
+    const isLoading = useAppSelector(state => state.posts.isLoading)
+
+    if (!posts.length && !isLoading) return <div>'No posts'</div>
 
     return (
-        !posts.length
+        isLoading
             ? <CircularProgress/> :
             <Grid container className={classes.mainContainer} alignItems={'stretch'} spacing={3}>
                 {posts.map(post => (

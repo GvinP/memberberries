@@ -32,8 +32,7 @@ const Navbar = () => {
         const token = user?.token
         if (token) {
             const decodedToken = decode<DecodedTokenType>(token)
-            console.log(decodedToken)
-            if(decodedToken.exp * 1000 < new Date().getTime()) logout()
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout()
         }
         //@ts-ignore
         setUser(JSON.parse(localStorage.getItem('profile')))
@@ -49,19 +48,20 @@ const Navbar = () => {
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
-                <img className={classes.image} src={image} alt={'memories'}/>
+                <img className={classes.image} src={image} alt={'memories'} width={'40px'}/>
                 <Typography className={classes.heading} component={Link} to={'/'} variant='h4'
                             align='center'>Memberberries</Typography>
             </div>
             <Toolbar>
                 {user ?
-                    <div className={classes.toolbar}>
+                    <div className={classes.profile}>
                         <Avatar className={classes.purple} src={user.authData?.image} alt={user.authData?.name}/>
                         <Typography className={classes.userName} variant={'h6'}>{user.authData?.name}</Typography>
                         <Button variant={'contained'} color={'secondary'} onClick={logout}>Logout</Button>
                     </div> :
-                    <div>
-                        <Button component={Link} to={'/login'} variant={'contained'} color={'primary'}>Sign In</Button>
+                    <div className={classes.toolbar}>
+                        <Button className={classes.logout} component={Link} to={'/login'} variant={'contained'}
+                                color={'primary'}>Sign In</Button>
                     </div>
                 }
             </Toolbar>

@@ -75,7 +75,7 @@ const Form = ({setCurrentId, currentId}: FormPropsType) => {
     }
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={6}>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant={'h6'}>{currentId ? 'Editing' : 'Creating'} a memory</Typography>
                 <TextField name={'title'}
