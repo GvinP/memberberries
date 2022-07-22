@@ -29,7 +29,7 @@ const Post = ({post, setCurrentId}: PostPostType) => {
     //@ts-ignore
     const user = JSON.parse(localStorage.getItem('profile'))
 
-    const openCard = () => navigate(`${post._id}`)
+    const openCard = () => navigate(`/posts/${post._id}`)
 
     const Likes = () => {
         if (post.likes.length > 0) {
