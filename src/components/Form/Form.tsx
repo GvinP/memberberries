@@ -18,6 +18,7 @@ const postDataInitialState = {
     tags: [],
     selectedFile: '',
     likes: [],
+    comments: [],
 }
 const Form = ({setCurrentId, currentId}: FormPropsType) => {
     const [postData, setPostData] = useState<PostType>(postDataInitialState)
@@ -90,6 +91,8 @@ const Form = ({setCurrentId, currentId}: FormPropsType) => {
                            variant={'outlined'}
                            label={'Message'}
                            focused={!!postData.message}
+                           minRows={4}
+                           multiline
                            fullWidth
                            value={postData.message}
                            onChange={(e) => setPostData({...postData, message: e.target.value})}

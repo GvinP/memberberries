@@ -8,6 +8,7 @@ import moment from "moment";
 import {Link, Navigate, useNavigate, useParams} from "react-router-dom";
 import useStyles from "./styles";
 import {getPostTC, searchPostsTC} from "../../actions/postsActions";
+import CommentsSection from "./CommentsSection";
 
 const PostDetails = () => {
     const dispatch = useAppDispatch()
@@ -53,7 +54,7 @@ const PostDetails = () => {
                     <Typography variant="h6">Created by: {post.name}</Typography>
                     <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
                     <Divider style={{margin: '20px 0'}}/>
-                    <Typography variant="body1"><strong>Comments - coming soon!</strong></Typography>
+                    <CommentsSection post={post}/>
                     <Divider style={{margin: '20px 0'}}/>
                 </div>
                 <div className={classes.imageSection}>

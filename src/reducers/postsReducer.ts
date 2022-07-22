@@ -10,6 +10,7 @@ export type PostType = {
     _id?: string
     createdAt?: string
     likes: Array<string>
+    comments: Array<string>
 }
 
 const initialState = {
@@ -22,7 +23,8 @@ const initialState = {
         tags: [],
         selectedFile: '',
         createdAt: '',
-        likes: []
+        likes: [],
+        comments: [],
     } as PostType,
     isLoading: true
 }

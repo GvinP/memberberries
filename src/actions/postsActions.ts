@@ -117,6 +117,18 @@ export const likePostTC = (id: string): AppThunk => {
     }
 }
 
+export const commentPostTC = (comment: string, id: string): AppThunk<Promise<Array<string>|undefined>> => {
+    return async (dispatch) => {
+        try {
+            const data = await api.commentPost(comment, id)
+            dispatch(updatePostAC(data))
+            return data.comments
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
 export type SearchQueryType = {
     search: string
     tags: string

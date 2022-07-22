@@ -34,6 +34,9 @@ export const api = {
     likePost(id: string) {
         return instance.patch(`posts/${id}/like`)
     },
+    commentPost(comment: string, id: string) {
+        return instance.post<any, {data: PostType }>(`posts/${id}/comment`, {comment}).then(res=> res.data)
+    },
     searchPosts(searchQuery: SearchQueryType) {
         return instance.get(`posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`)
     },
