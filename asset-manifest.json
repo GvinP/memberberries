@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/GvinP/memberberries/static/css/main.983c15ef.css",
+    "main.js": "/GvinP/memberberries/static/js/main.bc4a6265.js",
+    "static/media/icon-social.png": "/GvinP/memberberries/static/media/icon-social.deba3c6b8af6878709cf.png",
+    "index.html": "/GvinP/memberberries/index.html",
+    "main.983c15ef.css.map": "/GvinP/memberberries/static/css/main.983c15ef.css.map",
+    "main.bc4a6265.js.map": "/GvinP/memberberries/static/js/main.bc4a6265.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.983c15ef.css",
+    "static/js/main.bc4a6265.js"
+  ]
+}
