@@ -38,6 +38,10 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location])
 
+    const signIn = () => {
+        navigate('/login')
+    }
+
     const logout = () => {
         dispatch(logoutAC())
         googleLogout()
@@ -60,7 +64,9 @@ const Navbar = () => {
                         <Button variant={'contained'} color={'secondary'} onClick={logout}>Logout</Button>
                     </div> :
                     <div className={classes.toolbar}>
-                        <Button className={classes.logout} component={Link} to={'/login'} variant={'contained'}
+                        <Button className={classes.logout}
+                                onClick={signIn}
+                                variant={'contained'}
                                 color={'primary'}>Sign In</Button>
                     </div>
                 }

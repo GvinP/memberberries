@@ -4,7 +4,7 @@ import {FormDataType} from "../components/Login/Login";
 import {SearchQueryType} from "../actions/postsActions";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000/',
+    baseURL: 'https://memberberries-backend.herokuapp.com/',
 })
 
 instance.interceptors.request.use((req) => {

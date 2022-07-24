@@ -18,7 +18,7 @@ function App() {
                 <Route path="/posts/*" element={<Home/>}/>
                 <Route path="/posts/search" element={<Home/>}/>
                 <Route path="/posts/:id" element={<PostDetails/>}/>
-                <Route path="/login" element={!user?<Login/>:<Navigate to={'/posts'}/>}/>
+                <Route path="/login" element={!user?.authData?.name ? <Login/> : <Navigate to={'/posts'}/>}/>
             </Routes>
         </Container>
     )

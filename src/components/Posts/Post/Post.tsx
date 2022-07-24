@@ -53,13 +53,6 @@ const Post = ({post, setCurrentId}: PostPostType) => {
                     <Typography variant={'h6'}>{post.name}</Typography>
                     <Typography variant={'body2'}>{moment(post.createdAt).fromNow()}</Typography>
                 </div>
-                {(user?.authData?._id === post.author) && (
-                    <div className={classes.overlay2}>
-                        <Button style={{color: 'white'}} size={'small'} onClick={() => setCurrentId(post._id!)}>
-                            <MoreHorizIcon fontSize={'small'}/>
-                        </Button>
-                    </div>
-                )}
                 <div className={classes.details}>
                     <Typography variant={'body2'}
                                 color={'textSecondary'}>{post.tags.map(tag => `#${tag} `)}</Typography>
@@ -75,10 +68,17 @@ const Post = ({post, setCurrentId}: PostPostType) => {
                     <Likes/>
                 </Button>
                 {(user?.authData?._id === post.author) && (
-                    <Button color={'primary'} size={'small'} onClick={() => dispatch(deletePostTC(post._id!))}>
+                    <Button color={'secondary'} size={'small'} onClick={() => dispatch(deletePostTC(post._id!))}>
                         <Delete fontSize={'small'}/>
                         Delete
                     </Button>
+                )}
+                {(user?.authData?._id === post.author) && (
+                    <div className={classes.overlay2}>
+                        <Button style={{color: 'white'}} size={'small'} onClick={() => setCurrentId(post._id!)}>
+                            <MoreHorizIcon fontSize={'small'}/>
+                        </Button>
+                    </div>
                 )}
             </CardActions>
         </Card>
