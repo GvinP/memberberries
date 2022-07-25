@@ -26,6 +26,8 @@ const initialState = {
 
 export type FormDataType = typeof initialState
 
+const clientId = process.env.REACT_APP_CLIENT_ID
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState(initialState)
@@ -92,7 +94,7 @@ const Login = () => {
                             className={classes.submit}>{isSignUp ? 'Sign Up' : 'Sign In'}</Button>
                     <div className={classes.googleButton}>
                         <GoogleOAuthProvider
-                            clientId={'69485692774-brp7th84c8hu6sgcql958b3gkucm24cp.apps.googleusercontent.com'}>
+                            clientId={clientId!}>
                             <GoogleLogin onSuccess={(credentialResponse) => googleSuccess(credentialResponse)}
                                          onError={googleError}
                             />
