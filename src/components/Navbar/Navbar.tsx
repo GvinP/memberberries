@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import Avatar from "@material-ui/core/Avatar";
-import image from "../../images/icon-social.png";
+import image from "../../images/memberberries.png";
 import AppBar from "@material-ui/core/AppBar";
 import useStyles from './styles'
 import {Link, useLocation, useNavigate} from "react-router-dom";
@@ -52,9 +52,9 @@ const Navbar = () => {
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
-                <img className={classes.image} src={image} alt={'memories'} width={'40px'}/>
-                <Typography className={classes.heading} component={Link} to={'/'} variant='h4'
-                            align='center'>Memberberries</Typography>
+                <img className={classes.image} src={image} alt={'memories'} width={'200px'}/>
+                {/* <Typography className={classes.heading} component={Link} to={'/'} variant='h4'
+                            align='center'>Memberberries</Typography> */}
             </div>
             <Toolbar>
                 {user ?

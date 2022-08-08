@@ -44,6 +44,10 @@ export default makeStyles((theme) => ({
         backgroundColor: deepPurple[500],
     },
     [theme.breakpoints.down('sm')]: {
+        mainContainer: {
+            padding: '0',
+            marginLeft: '-12px',
+        },
         appBar: {
             padding: '10px 20px',
         },
