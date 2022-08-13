@@ -52,9 +52,9 @@ const Navbar = () => {
     return (
         <AppBar className={classes.appBar} position='static' color='inherit'>
             <div className={classes.brandContainer}>
-                <img className={classes.image} src={image} alt={'memories'} width={'200px'}/>
-                {/* <Typography className={classes.heading} component={Link} to={'/'} variant='h4'
-                            align='center'>Memberberries</Typography> */}
+                <Link to={'/'}>
+                    <img className={classes.image} src={image} alt={'memories'} width={'200px'}/>
+                </Link>
             </div>
             <Toolbar>
                 {user ?
