@@ -16,6 +16,7 @@ export const loginTC = (formData: FormDataType, navigate: NavigateFunction): App
         try {
             const {data} = await authApi.login(formData)
             dispatch(loginAC(data))
+            localStorage.setItem('profile', JSON.stringify({authData: data.result, token: data.token}))
             navigate('/')
         } catch (e) {
             console.log(e)

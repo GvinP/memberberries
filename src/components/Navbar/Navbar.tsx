@@ -43,6 +43,7 @@ const Navbar = () => {
     }
 
     const logout = () => {
+        localStorage.removeItem('profile')
         dispatch(logoutAC())
         googleLogout()
         navigate('/')

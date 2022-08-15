@@ -59,6 +59,7 @@ const Login = () => {
             },
             token: response?.credential!
         }
+        localStorage.setItem('profile', JSON.stringify({authData: user.result, token: user.token}))
         dispatch(loginAC(user))
         navigate('/')
     }
